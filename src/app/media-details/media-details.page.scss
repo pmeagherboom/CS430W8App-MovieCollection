@@ -1,0 +1,183 @@
+/* Page background */
+
+ion-content {
+  --background: #121212;
+
+  --padding-bottom:
+    calc(
+      32px +
+      env(safe-area-inset-bottom)
+    );
+}
+
+
+/* Page title */
+
+ion-title {
+  text-align: center;
+
+  font-weight: 700;
+}
+
+
+/* Details container */
+
+.details-container {
+  max-width: 800px;
+
+  margin: 0 auto;
+
+  padding: 24px 18px;
+}
+
+
+/* Movie card */
+
+.movie-details-card {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+
+  min-height: 330px;
+
+  padding: 24px;
+
+  border-radius: 24px;
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+}
+
+
+/* Movie cover */
+
+.details-image {
+  width: 190px;
+  height: 270px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #1b1b1b;
+}
+
+.details-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* No photo placeholder */
+
+.details-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #1d1d1d;
+
+  font-size: 48px;
+}
+
+
+/* Movie info */
+
+.details-info {
+  flex: 1;
+
+  color: #ffffff;
+}
+
+.details-info h1 {
+  margin: 0 0 26px;
+
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.details-info p {
+  margin: 0 0 18px;
+
+  color: #f0f0f0;
+
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+
+/* Edit button */
+
+.edit-movie-button {
+  margin-top: 18px;
+
+  --background: #403936;
+  --background-hover: #4c4440;
+  --color: #ffffff;
+
+  color: #ffffff;
+
+  --border-radius: 14px;
+
+  font-weight: 600;
+
+  text-transform: none;
+}
+
+.edit-movie-button::part(native) {
+  color: #ffffff;
+}
+
+
+/* Phone layout */
+
+@media (max-width: 600px) {
+
+  .details-container {
+    padding:
+      18px
+      14px;
+  }
+
+  .movie-details-card {
+    /* Keeps the card from looking too small on the page */
+    min-height: 285px;
+
+    gap: 18px;
+
+    padding: 18px;
+
+    border-radius: 22px;
+  }
+
+  .details-image {
+    /* Makes the cover a little larger on phones */
+    width: 145px;
+    height: 215px;
+  }
+
+  .details-info h1 {
+    margin-bottom: 22px;
+
+    font-size: 25px;
+  }
+
+  .details-info p {
+    margin-bottom: 14px;
+
+    font-size: 15px;
+  }
+}

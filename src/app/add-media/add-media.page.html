@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home">
+      </ion-back-button>
+    </ion-buttons>
+
+    <!-- Page title -->
+    <ion-title>
+      Add Media
+    </ion-title>
+
+    <!-- Home button -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home">
+        Home
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="form-container">
+
+    <!-- Movie info -->
+    <div class="form-card">
+
+      <!-- Title -->
+      <ion-item>
+        <ion-input
+          label="Title"
+          labelPlacement="stacked"
+          placeholder="Enter movie title"
+          [(ngModel)]="title">
+        </ion-input>
+      </ion-item>
+
+      <!-- Year -->
+      <ion-item>
+        <ion-input
+          label="Year"
+          labelPlacement="stacked"
+          type="number"
+          placeholder="Enter release year"
+          [(ngModel)]="year">
+        </ion-input>
+      </ion-item>
+
+      <!-- Format -->
+      <ion-item>
+        <ion-select
+          label="Format"
+          labelPlacement="stacked"
+          placeholder="Select format"
+          [(ngModel)]="format">
+
+          <ion-select-option value="DVD">
+            DVD
+          </ion-select-option>
+
+          <ion-select-option value="Blu-ray">
+            Blu-ray
+          </ion-select-option>
+
+          <ion-select-option value="4K UHD">
+            4K UHD
+          </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+      <!-- Genre -->
+      <ion-item>
+        <ion-input
+          label="Genre"
+          labelPlacement="stacked"
+          placeholder="Enter genre"
+          [(ngModel)]="genre">
+        </ion-input>
+      </ion-item>
+
+      <!-- Notes -->
+      <ion-item>
+        <ion-input
+          label="Notes"
+          labelPlacement="stacked"
+          placeholder="Enter any notes"
+          [(ngModel)]="notes">
+        </ion-input>
+      </ion-item>
+
+    </div>
+
+
+    <!-- Cover photo -->
+    <div class="photo-section">
+
+      <h2>
+        Cover Photo
+      </h2>
+
+      <!-- Photo preview -->
+      <div
+        *ngIf="photo"
+        class="photo-preview">
+
+        <img
+          [src]="photo"
+          alt="Movie cover">
+
+      </div>
+
+      <!-- Camera button -->
+      <ion-button
+        class="photo-button"
+        expand="block"
+        (click)="takePhoto()">
+
+        {{ photo ? 'Retake Photo' : 'Add Photo' }}
+
+      </ion-button>
+
+    </div>
+
+
+    <!-- Add movie button -->
+    <ion-button
+      class="save-button"
+      expand="block"
+      (click)="addMovie()">
+
+      Add to Collection
+
+    </ion-button>
+
+  </div>
+
+</ion-content>

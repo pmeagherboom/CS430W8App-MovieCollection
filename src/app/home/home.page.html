@@ -1,0 +1,140 @@
+<ion-content>
+
+  <div class="collection-container">
+
+    <!-- Collection title and movie count -->
+    <div class="collection-intro">
+
+      <h1>
+        My Collection
+      </h1>
+
+      <p>
+        {{ movies.length }}
+        {{ movies.length === 1 ? 'movie' : 'movies' }}
+        in your collection
+      </p>
+
+    </div>
+
+    <!-- Search bar -->
+    <ion-searchbar
+      class="collection-search"
+      placeholder="Search your collection..."
+      (ionInput)="searchMovies($event)">
+    </ion-searchbar>
+
+    <!-- Sort options -->
+    <div class="sort-container">
+
+      <span class="sort-label">
+        Sort by
+      </span>
+
+      <ion-select
+        class="sort-select"
+        interface="popover"
+        [value]="sortOption"
+        (ionChange)="sortMovies($event)">
+
+        <ion-select-option value="dateAdded">
+          Date Added — Newest
+        </ion-select-option>
+
+        <ion-select-option value="title">
+          Title — A to Z
+        </ion-select-option>
+
+        <ion-select-option value="year">
+          Release Year — Newest
+        </ion-select-option>
+
+        <ion-select-option value="format">
+          Format
+        </ion-select-option>
+
+      </ion-select>
+
+    </div>
+
+    <!-- Movie list -->
+    <div class="movie-list">
+
+      @for (movie of filteredMovies; track movie.id) {
+
+        <div
+          class="movie-card"
+          [style.background]="movie.cardColor || null"
+          [routerLink]="['/media-details', movie.id]">
+
+          <!-- Movie cover -->
+          <div class="movie-image">
+
+            @if (movie.photo) {
+
+              <img
+                [src]="movie.photo"
+                [alt]="movie.title">
+
+            } @else {
+
+              <div class="movie-placeholder">
+                🎬
+              </div>
+
+            }
+
+          </div>
+
+          <!-- Movie info -->
+          <div class="movie-info">
+
+            <h2>
+              {{ movie.title }}
+            </h2>
+
+            <p class="movie-year">
+              {{ movie.year }}
+            </p>
+
+            <div class="movie-details">
+
+              <span>
+                {{ movie.format }}
+              </span>
+
+              <span>
+                {{ movie.genre }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer class="collection-footer">
+
+  <ion-toolbar>
+
+    <!-- Add movie button -->
+    <ion-button
+      class="add-movie-button"
+      expand="block"
+      routerLink="/add-media">
+
+      + Add Movie
+
+    </ion-button>
+
+  </ion-toolbar>
+
+</ion-footer>

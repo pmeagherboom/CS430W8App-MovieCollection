@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+
+      <ion-back-button
+        defaultHref="/home">
+      </ion-back-button>
+
+    </ion-buttons>
+
+    <!-- Page title -->
+    <ion-title>
+      Media Details
+    </ion-title>
+
+    <!-- Home button -->
+    <ion-buttons slot="end">
+
+      <ion-button
+        routerLink="/home">
+        Home
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div
+    *ngIf="movie"
+    class="details-container">
+
+    <!-- Movie details -->
+    <div
+      class="movie-details-card"
+      [style.background]="movieColor">
+
+      <!-- Movie cover -->
+      <div class="details-image">
+
+        <img
+          *ngIf="movie.photo"
+          [src]="movie.photo"
+          [alt]="movie.title">
+
+        <div
+          *ngIf="!movie.photo"
+          class="details-placeholder">
+          🎬
+        </div>
+
+      </div>
+
+
+      <!-- Movie info -->
+      <div class="details-info">
+
+        <h1>
+          {{ movie.title }}
+        </h1>
+
+        <p>
+          <strong>Year:</strong>
+          {{ movie.year }}
+        </p>
+
+        <p>
+          <strong>Format:</strong>
+          {{ movie.format }}
+        </p>
+
+        <p>
+          <strong>Genre:</strong>
+          {{ movie.genre }}
+        </p>
+
+        <p *ngIf="movie.notes">
+          <strong>Notes:</strong>
+          {{ movie.notes }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Edit button -->
+    <ion-button
+      class="edit-movie-button"
+      expand="block"
+      [routerLink]="[
+        '/edit-media',
+        movieId
+      ]">
+
+      Edit Movie
+
+    </ion-button>
+
+  </div>
+
+</ion-content>
